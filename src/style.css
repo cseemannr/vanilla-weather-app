@@ -1,0 +1,25 @@
+body {
+  background-color: var(--bs-gray-200);
+  font-family: "Roboto", sans-serif;
+  color: var(--bs-gray-600);
+  font-size: 20px;
+}
+
+h1 {
+  font-family: "Young Serif", serif;
+  font-style: normal;
+  color: var(--bs-gray-800) !important;
+}
+
+.container-main {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+}
+
+.display-1 {
+  color: var(--bs-gray-700);
+}
+
+.code-link {
+  font-size: 16px;
+}
