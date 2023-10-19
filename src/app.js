@@ -35,7 +35,7 @@ let minTemperature;
 
 axios
   .get(
-    `http://api.openweathermap.org/data/2.5/weather?q=Florianopolis&APPID=${apiKey}&units=metric `
+    `https://api.openweathermap.org/data/2.5/weather?q=Florianopolis&APPID=${apiKey}&units=metric `
   )
   .then(renderTemperature);
 
@@ -44,7 +44,7 @@ function handleSubmit(event) {
   let city = inputEl.value;
 
   if (city) {
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric `;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric `;
     axios.get(apiUrl).then(renderTemperature);
   }
 }
@@ -54,7 +54,6 @@ function renderTemperature(res) {
   let sunrise = res.data.sys.sunrise;
   let sunset = res.data.sys.sunset;
   let rain = res.data.rain;
-  rain = { 3: 1.6 };
   let snow = res.data.snow;
 
   if (rain) {
