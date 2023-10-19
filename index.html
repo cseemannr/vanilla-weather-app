@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div class="container-sm my-5 container-main p-5 shadow-lg">
+    <div class="container my-5 container-main p-5 shadow-lg">
       <form id="form-city" class="row mb-5">
-        <div class="col-8">
+        <div class="col-6">
           <input
             id="text-input"
             class="form-control"
@@ -36,7 +36,7 @@
             aria-label="Search for city"
           />
         </div>
-        <div class="col-4">
+        <div class="col-6">
           <input type="submit" class="btn btn-secondary" />
           <button id="form-clear" class="btn btn-outline-secondary">
             Clear
@@ -45,30 +45,72 @@
       </form>
 
       <div class="row">
-        <h1 class="h1 text-capitalize">florianópolis</h1>
-        <p>Last updated: <span id="date-time">now</span></p>
+        <h1 class="h1 text-capitalize">--</h1>
+        <p>Last updated: <span id="date-time">--</span></p>
+        <p id="conditions" class="text-capitalize">--</p>
         <div>
           <a
             id="temperature-celcius-link"
-            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover active"
             href="#"
             >ºC</a
           >
           <span>|</span>
           <a
             id="temperature-fahrenheit-link"
-            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
             href="#"
             >ºF</a
           >
         </div>
-        <h2 id="temperature" class="display-1 col-4">
-          32<span class="display-6 opacity-50">ºC</span>
-        </h2>
-        <h2 id="icon" class="display-1 col-4">🌤</h2>
-        <div class="col-4">
-          <p>Humidity: <span id="humidity">81</span>%</p>
-          <p>Windy: <span id="windy">2</span>%</p>
+        <div class="row">
+          <h2 id="temperature" class="display-1 col-6">
+            0<span class="display-6 opacity-50">ºC</span>
+          </h2>
+          <img
+            class="col-6"
+            id="icon"
+            src="https://openweathermap.org/img/wn/10d@4x.png"
+            alt=""
+          />
+        </div>
+        <div class="col-6">
+          <p>
+            <img class="svg-icon" src="src/icons/maxtemp.svg" alt="" />
+            <span id="temperature-max"></span>
+          </p>
+          <p>
+            <img class="svg-icon" src="src/icons/mintemp.svg" alt="" />
+            <span id="temperature-min"></span>
+          </p>
+          <p>
+            <img
+              class="svg-icon"
+              src="/src/icons/sunrise.svg"
+              alt="sunrise icon"
+            />
+            <span id="sunrise">00:00</span>
+          </p>
+          <p>
+            <img
+              class="svg-icon"
+              src="/src/icons/sunset.svg"
+              alt="sunset icon"
+            />
+            <span id="sunset">00:00</span>
+          </p>
+        </div>
+        <div class="col-6">
+          <p>
+            <img class="svg-icon" src="src/icons/windy.svg" alt="" />
+            <span id="windy">00</span> m/s
+          </p>
+          <p>
+            <img class="svg-icon" src="src/icons/humidity.svg" alt="" />
+            <span id="humidity">00</span>%
+          </p>
+          <p id="rain"></p>
+          <p id="snow"></p>
         </div>
       </div>
     </div>

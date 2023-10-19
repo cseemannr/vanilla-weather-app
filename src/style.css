@@ -2,13 +2,26 @@ body {
   background-color: var(--bs-gray-200);
   font-family: "Roboto", sans-serif;
   color: var(--bs-gray-600);
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 h1 {
   font-family: "Young Serif", serif;
   font-style: normal;
   color: var(--bs-gray-800) !important;
+}
+
+img {
+  object-fit: cover;
+  height: auto;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.row {
+  align-items: center;
 }
 
 .container-main {
@@ -20,6 +33,17 @@ h1 {
   color: var(--bs-gray-700);
 }
 
-.code-link {
-  font-size: 16px;
+.svg-icon {
+  width: 36px;
+  fill: var(--bs-gray-600);
+}
+
+a.active {
+  font-weight: 800;
+}
+
+a:hover,
+a:active {
+  color: var(--bs-gray-800) !important;
+  font-weight: 800;
 }
