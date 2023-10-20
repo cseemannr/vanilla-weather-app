@@ -16,8 +16,9 @@ let sunriseEl = document.querySelector("#sunrise");
 let sunsetEl = document.querySelector("#sunset");
 let rainEl = document.querySelector("#rain");
 let snowEl = document.querySelector("#snow");
+let forecastEl = document.querySelector("#forecast-container");
 
-let apiKey = "303adf0028cb2b7e4cf7863cb1943e4e";
+let apiKey = "1a2b7258ebd456c01aef9175dfe8b709";
 
 let daysOfWeek = [
   "Sunday",
@@ -33,20 +34,19 @@ let currentTemperature;
 let maxTemperature;
 let minTemperature;
 
-axios
-  .get(
-    `https://api.openweathermap.org/data/2.5/weather?q=Florianopolis&APPID=${apiKey}&units=metric `
-  )
-  .then(renderTemperature);
+searchCity("Florianopolis");
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = inputEl.value;
 
-  if (city) {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric `;
-    axios.get(apiUrl).then(renderTemperature);
+  if (inputEl.value) {
+    searchCity(inputEl.value);
   }
+}
+
+function searchCity(city) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric `;
+  axios.get(apiUrl).then(renderTemperature);
 }
 
 function renderTemperature(res) {
@@ -89,6 +89,8 @@ function renderTemperature(res) {
   );
 
   renderCelcius();
+
+  getForecast(res.data.coord);
 }
 
 function generateTime(date) {
@@ -146,9 +148,40 @@ function renderFarenheit() {
   `;
 }
 
+function getForecast(coords) {
+  let lat = coords.lat;
+  let lon = coords.lon;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios(apiUrl).then(renderForecast);
+}
+
+function renderForecast(res) {
+  let daysArray = res.data.daily.slice(1, 7);
+  let forecastHtml = ``;
+
+  daysArray.forEach((day) => {
+    forecastHtml += `<div class="col-2">
+        <p id="forecast-day">${generateDay(day.dt).slice(0, 3)}</p>
+        <img
+          id="forecast-icon"
+          src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
+          alt="${day.weather[0].description}"
+        />
+        <p>
+          <span id="forecast-max">${Math.round(
+            day.temp.max
+          )}º</span>|<span id="forecast-min">${Math.round(day.temp.min)}º</span>
+        </p>
+      </div>`;
+  });
+
+  forecastEl.innerHTML = forecastHtml;
+}
+
 clearButtonEl.addEventListener("click", clearForm);
 
 formCityEl.addEventListener("submit", handleSubmit);
 
 celciusEl.addEventListener("click", renderCelcius);
+
 fahrenheitEl.addEventListener("click", renderFarenheit);

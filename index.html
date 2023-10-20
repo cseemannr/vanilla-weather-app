@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div class="container my-5 container-main p-5 shadow-lg">
+    <div class="container my-5 container-main p-4 shadow-lg">
       <form id="form-city" class="row mb-5">
         <div class="col-6">
           <input
@@ -43,12 +43,11 @@
           </button>
         </div>
       </form>
-
       <div class="row">
         <h1 class="h1 text-capitalize">--</h1>
         <p>Last updated: <span id="date-time">--</span></p>
         <p id="conditions" class="text-capitalize">--</p>
-        <div>
+        <p>
           <a
             id="temperature-celcius-link"
             class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover active"
@@ -62,18 +61,16 @@
             href="#"
             >ºF</a
           >
-        </div>
-        <div class="row">
-          <h2 id="temperature" class="display-1 col-6">
-            0<span class="display-6 opacity-50">ºC</span>
-          </h2>
-          <img
-            class="col-6"
-            id="icon"
-            src="https://openweathermap.org/img/wn/10d@4x.png"
-            alt=""
-          />
-        </div>
+        </p>
+        <h2 id="temperature" class="display-1 col-3">
+          0<span class="display-6 opacity-50">ºC</span>
+        </h2>
+        <img
+          id="icon"
+          class="col-3"
+          src="https://openweathermap.org/img/wn/10d@4x.png"
+          alt=""
+        />
         <div class="col-6">
           <p>
             <img class="svg-icon" src="src/icons/maxtemp.svg" alt="" />
@@ -99,8 +96,6 @@
             />
             <span id="sunset">00:00</span>
           </p>
-        </div>
-        <div class="col-6">
           <p>
             <img class="svg-icon" src="src/icons/windy.svg" alt="" />
             <span id="windy">00</span> m/s
@@ -113,6 +108,7 @@
           <p id="snow"></p>
         </div>
       </div>
+      <div id="forecast-container" class="row text-center mt-5"></div>
     </div>
     <div class="container">
       <p class="opacity-75 code-link">
